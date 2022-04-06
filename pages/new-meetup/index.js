@@ -1,7 +1,6 @@
 import React from 'react'
 import MeetUpForm from '../../components/meetups/NewMeetupForm'
 
-
 function NewMeet() {
   
     const onSubmitHandler = (newmeetupData) => {
@@ -9,7 +8,7 @@ function NewMeet() {
     }
 
     return (
-    <MeetUpForm onAddMeetup={onSubmitHandler}/>
+        <MeetUpForm onAddMeetup={onSubmitHandler}/>
   )
 }
 
