@@ -1,14 +1,51 @@
-import React from 'react'
+import React from "react";
+import MeetupDetails from "../../components/meetups/MeetupDeatils";
 
-function MeetupDetails() {
+function Meetup(props) {
   return (
-    <>
-        <img src='https://finlinkpartners.io/news/wp-content/uploads/2020/01/cENTRALIZED-VS-DECENTRALIZED-BLOCKCHAIN.jpg'/>
-        <h1>First Blockchain Meetup</h1>
-        <address>Sivakasi TamilNadu</address>
-        <p>SO this is the discription</p>
-    </>
-  )
+    <MeetupDetails
+      image={props.meetupData.image}
+      title={props.meetupData.title}
+      address={props.meetupData.address}
+      discription={props.meetupData.discription}
+    />
+  );
 }
 
-export default MeetupDetails
+export async function getStaticPaths() {
+  return {
+    fallback: false,
+    paths: [
+      {
+        params: {
+          meetupid: 'm1'
+        }
+      },
+      {
+        params: {
+          meetupid: 'm2'
+        }
+      },
+    ]
+  }
+}
+
+export async function getStaticProps(context) {
+
+  const meetupid = context.params.meetupid
+
+  console.log(meetupid);
+
+  return {
+    props: {
+      meetupData: {
+        image:"https://finlinkpartners.io/news/wp-content/uploads/2020/01/cENTRALIZED-VS-DECENTRALIZED-BLOCKCHAIN.jpg",
+        title: "First BlockChain meetup",
+        address: "Sivakasi, TamilNadu",
+        discription: "New meetup"
+      }
+    }
+  }
+}
+
+export default Meetup;
