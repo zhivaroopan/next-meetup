@@ -5,7 +5,7 @@ async function handler(req, res) {
         console.log('came here');
         const data = req.body
         console.log(data);
-        const client  = await MongoClient.connect('mongodb://127.0.0.1:27017/new-meetup')
+        const client  = await MongoClient.connect('mongodb+srv://zenoDB:zenoDB@zeddnext.5yops.mongodb.net/meetups?retryWrites=true&w=majority')
         const db = client.db()
         const meetupCollection = db.collection('meetups')
         const result = await meetupCollection.insertOne(data)

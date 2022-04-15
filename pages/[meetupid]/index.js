@@ -22,7 +22,7 @@ function Meetup(props) {
 
 export async function getStaticPaths() {
 
-const client  = await MongoClient.connect('mongodb://127.0.0.1:27017/new-meetup')
+const client  = await MongoClient.connect('mongodb+srv://zenoDB:zenoDB@zeddnext.5yops.mongodb.net/meetups?retryWrites=true&w=majority')
 const db = client.db()
 const meetupCollection = db.collection('meetups')
 const meetupData = await meetupCollection.find({}, { _id:1 }).toArray()
@@ -38,7 +38,7 @@ export async function getStaticProps(context) {
 
   const meetupid = context.params.meetupid
 
-  const client  = await MongoClient.connect('mongodb://127.0.0.1:27017/new-meetup')
+  const client  = await MongoClient.connect('mongodb+srv://zenoDB:zenoDB@zeddnext.5yops.mongodb.net/meetups?retryWrites=true&w=majority')
   const db = client.db()
   const meetupCollection = db.collection('meetups')
   const meetupData = await meetupCollection.findOne({_id: ObjectId(meetupid)})
