@@ -29,7 +29,7 @@ const meetupData = await meetupCollection.find({}, { _id:1 }).toArray()
 await client.close()
 
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: meetupData.map((meetup) => ({ params : { meetupid: meetup._id.toString() }}))
   }
 }
